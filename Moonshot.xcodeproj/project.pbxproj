@@ -78,12 +78,12 @@
 				0462ECA32C2AEF2300282569 /* HierarchialCode.swift */,
 				0462ECA52C2AFACD00282569 /* LayoutScroll.swift */,
 				0462ECA72C2AFD7200282569 /* LoadingCodable.swift */,
+				0462ECB52C2AFFEE00282569 /* Bundle-Decodable.swift */,
+				0462ECB72C2B0A3000282569 /* Mission.swift */,
+				0462ECB32C2AFF7F00282569 /* Astronaut.swift */,
 				04FC370E2C2A2D4F00B2F0C3 /* Assets.xcassets */,
 				04DFE88B2C2B483800C32801 /* astronauts.json */,
 				04DFE88D2C2B483E00C32801 /* missions.json */,
-				0462ECB32C2AFF7F00282569 /* Astronaut.swift */,
-				0462ECB72C2B0A3000282569 /* Mission.swift */,
-				0462ECB52C2AFFEE00282569 /* Bundle-Decodable.swift */,
 				04FC37102C2A2D4F00B2F0C3 /* Preview Content */,
 			);
 			path = Moonshot;

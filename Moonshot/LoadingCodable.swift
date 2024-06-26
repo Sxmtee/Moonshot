@@ -21,7 +21,7 @@ struct LoadingCodable: View {
                 LazyVGrid (columns: column) {
                     ForEach(mission) { mission in
                         NavigationLink {
-                            Text("Detail View")
+                            Text(mission.displayName)
                         } label: {
                             VStack {
                                 Image(mission.image)
@@ -33,7 +33,7 @@ struct LoadingCodable: View {
                                     Text(mission.displayName)
                                         .font(.headline)
                                     
-                                    Text(mission.launchDate ?? "N/A")
+                                    Text(mission.formattedLaunchDate)
                                         .font(.caption)
                                 }
                                 .frame(maxWidth: .infinity)
