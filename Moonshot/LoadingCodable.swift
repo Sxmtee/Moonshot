@@ -15,34 +15,92 @@ struct LoadingCodable: View {
         GridItem(.adaptive(minimum: 150))
     ]
     
+    @State private var isShowingGrid = true
+    
     var body: some View {
         NavigationStack {
             ScrollView {
-                LazyVGrid (columns: column) {
-                    ForEach(mission) { mission in
-                        NavigationLink {
-                            Text(mission.displayName)
-                        } label: {
-                            VStack {
-                                Image(mission.image)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 100, height: 100)
-                                
+                if isShowingGrid {
+                    LazyVGrid (columns: column) {
+                        ForEach(mission) { mission in
+                            NavigationLink {
+                                MissionView(mission: mission, astronaut: astronauts )
+                            } label: {
                                 VStack {
-                                    Text(mission.displayName)
-                                        .font(.headline)
+                                    Image(mission.image)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 100, height: 100)
+                                        .padding()
                                     
-                                    Text(mission.formattedLaunchDate)
-                                        .font(.caption)
+                                    VStack {
+                                        Text(mission.displayName)
+                                            .font(.headline)
+                                            .foregroundStyle(.white)
+                                        
+                                        Text(mission.formattedLaunchDate)
+                                            .font(.caption)
+                                    }
+                                    .padding(.vertical)
+                                    .frame(maxWidth: .infinity)
+                                    .background(.lightBackground)
                                 }
-                                .frame(maxWidth: .infinity)
+                                .clipShape(.rect(cornerRadius: 10))
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .stroke(.lightBackground)
+                                )
                             }
                         }
                     }
+                    .padding([.horizontal, .vertical])
+                } else {
+                    VStack {
+                        ForEach(mission) { mission in
+                            NavigationLink {
+                                MissionView(mission: mission, astronaut: astronauts )
+                            } label: {
+                                VStack {
+                                    Image(mission.image)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 100, height: 100)
+                                        .padding()
+                                    
+                                    VStack {
+                                        Text(mission.displayName)
+                                            .font(.headline)
+                                            .foregroundStyle(.white)
+                                        
+                                        Text(mission.formattedLaunchDate)
+                                            .font(.caption)
+                                    }
+                                    .padding(.vertical)
+                                    .frame(maxWidth: .infinity)
+                                    .background(.lightBackground)
+                                }
+                                .clipShape(.rect(cornerRadius: 10))
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .stroke(.lightBackground)
+                                )
+                            }
+                        }
+                    }
+                    .padding([.horizontal, .vertical])
                 }
             }
             .navigationTitle("MoonShot")
+            .background(.darkBackground)
+            .preferredColorScheme(.dark)
+            .toolbar {
+                Button(action: {
+                    isShowingGrid.toggle()
+                                }) {
+                                    Image(systemName: isShowingGrid ? "square.grid.2x2" : "list.dash")
+                                }
+                            
+                        }
         }
     }
 }
